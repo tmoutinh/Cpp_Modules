@@ -6,6 +6,11 @@ Zombie::Zombie(std::string name)
     return ;
 }
 
+Zombie::Zombie()
+{
+    return ;
+}
+
 Zombie::~Zombie()
 {
     return ;
