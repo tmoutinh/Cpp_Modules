@@ -11,6 +11,8 @@ class filename{
         void    *write_content();
     private:
         char *_content;
+        std::ifstream _input;
+        std::ofstream _output;
 };
 
 #endif
