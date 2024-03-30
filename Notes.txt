@@ -2,3 +2,6 @@
  - Did not finish Cpp module 02 ex03
 
 https://www.francescmm.com/orthodox-canonical-class-form/
+
+
+Have to do Makefile for Cpp module 03 and Cpp module 04

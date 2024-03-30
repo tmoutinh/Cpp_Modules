@@ -27,4 +27,5 @@ private:
     std::string _numb;
     std::string _secret;
 };
+
 #endif

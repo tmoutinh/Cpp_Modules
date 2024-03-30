@@ -66,3 +66,4 @@ std::ostream& operator<<(std::ostream& out, const Fixed& num)
     out << num.toFloat();
     return (out);
 }
+

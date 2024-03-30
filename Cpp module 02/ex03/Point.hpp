@@ -14,9 +14,4 @@ public:
 	Point& operator=(const Point& other);
 };
 
-
-
-
-
-
 #endif
