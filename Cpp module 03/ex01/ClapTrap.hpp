@@ -6,11 +6,11 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string	name;
-	int			hp = 10;
-	int			ene = 10;
-	int			atk = 0;
+	int	hp;
+	int	ene;
+	int	atk;
 public:
 	ClapTrap();
 	ClapTrap(std::string name);
@@ -21,6 +21,11 @@ public:
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
+
+	std::string getName(void) const;
+	int getHealth(void) const;
+	int getEnergy(void) const;
+	int getDamage(void) const;
 };
 
 
