@@ -18,7 +18,8 @@ void    PhoneBook::add_contact()
     if (this->_nbcontact >= 7)
         this->_nbcontact = 0;
     std::cout << "Input first name" << std::endl;
-    std::getline(std::cin,fn,'\n');
+    std::getline(std::cin,fn);
+    std::cout << fn << std::endl;
     std::cout << "Input last name" << std::endl;
     std::getline(std::cin,ln,'\n');
     std::cout << "Input nickname" << std::endl;
@@ -38,7 +39,7 @@ void    PhoneBook::add_contact()
     this->_Contact_array[this->_nbcontact] = Contact(fn,ln,nc,nb,sc);
     this->_nbcontact += 1;
     std::cout << CLEAR_SCREEN;
-    std::cout << "------ Contact Saves ------" << std::endl;
+    std::cout << "------ Contact Saved ------" << std::endl;
 }
 
 void    PhoneBook::_display_contacts()

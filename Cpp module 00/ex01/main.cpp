@@ -18,6 +18,13 @@ int main(void)
             instance.search_contacts();
         if (cmd == "EXIT")
             break ;
+        if (cmd.empty())
+        {
+            std::cout << "Invalid command\n> EXITED PHONEBOOK! <" << std::endl;
+            break;
+        }
+        if (cmd != "ADD" && cmd != "SEARCH" && cmd != "EXIT")
+            std::cout << "Invalid command" << std::endl;
 
     }
     return (0);
