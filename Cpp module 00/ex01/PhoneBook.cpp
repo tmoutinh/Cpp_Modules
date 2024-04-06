@@ -17,6 +17,8 @@ std::string    _get_text(std::string txt)
     std::cout << txt << std::endl;
 
     std::getline(std::cin, data);
+    if (std::cin.eof())
+		exit(0);
     size_t start = data.find_first_not_of(" \t\r\n");
     if (start == data.size())
 	{
