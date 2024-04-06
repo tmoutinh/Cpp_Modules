@@ -11,35 +11,47 @@ PhoneBook::~PhoneBook()
     return ;
 }
 
+std::string    _get_text(std::string txt)
+{
+    std::string data;
+    std::cout << txt << std::endl;
+
+    std::getline(std::cin, data);
+    size_t start = data.find_first_not_of(" \t\r\n");
+    if (start == data.size())
+	{
+		std::cout << "ERROR: EMPTY FIELD.\n";
+		return ("");
+	}
+	size_t end = data.find_last_not_of(" \t\r\n");
+	data = data.substr(start, end - start + 1);
+    return (data);
+}
+
 void    PhoneBook::add_contact()
 {
     std::string fn, ln,nc,nb,sc;
 
     if (this->_nbcontact >= 7)
         this->_nbcontact = 0;
-    std::cout << "Input first name" << std::endl;
-    std::getline(std::cin,fn);
-    std::cout << fn << std::endl;
-    std::cout << "Input last name" << std::endl;
-    std::getline(std::cin,ln,'\n');
-    std::cout << "Input nickname" << std::endl;
-    std::getline(std::cin,nc,'\n');
-    std::cout << "Input phone number" << std::endl;
-    std::getline(std::cin,nb,'\n');
-    std::cout << "Input darkest secret" << std::endl;
-    std::getline(std::cin,sc,'\n');
+    fn = _get_text("Input first name");
+    ln = _get_text("Input last name");
+    nc = _get_text("Input nickname");
+    nb = _get_text("Input phone number");
+    sc = _get_text("Input darkest secret");
 
     if (fn.size() < 1 || ln.size() < 1 || nc.size() < 1
      || nb.size() < 1 || sc.size() < 1)
     {
-        std::cout << "All fields must be filled" << std::endl;
+        std::cout << "Contact not saved\n   All fields must be filled" << std::endl;
+        sleep(2);
         return ;
     }
-
     this->_Contact_array[this->_nbcontact] = Contact(fn,ln,nc,nb,sc);
     this->_nbcontact += 1;
-    std::cout << CLEAR_SCREEN;
+    system("clear");
     std::cout << "------ Contact Saved ------" << std::endl;
+    sleep(2);
 }
 
 void    PhoneBook::_display_contacts()
@@ -69,13 +81,11 @@ void    PhoneBook::search_contacts()
     std::cin >> index;
     if ( (index - 1) >= 0 && (index - 1) < 8)
     {
-        std::cout << CLEAR_SCREEN;
+        system("clear");
         std::cout << "Index :" << index << std::endl;
         this->_Contact_array[index - 1].display();
     }
     else
-    {
         std::cout << "Invalid Index" << std::endl;
-        return ;
-    }
+    sleep(2);
 }

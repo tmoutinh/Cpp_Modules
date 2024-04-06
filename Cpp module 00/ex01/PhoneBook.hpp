@@ -18,7 +18,6 @@ private:
     int _nbcontact;
     static const int _max_contacts = 8;
     Contact _Contact_array[_max_contacts];
-
     void    _display_contacts();
 };
 
