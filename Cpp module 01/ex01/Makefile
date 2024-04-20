@@ -24,7 +24,7 @@ OBJS_FOLDER = objs
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
 OBJS			= Zombie.o ZombieHorde.o main.o
-NAME			= PhoneBook
+NAME			= Zombie
 TARGET			= $(addprefix $(SRCS)/, $(OBJS))
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ RULES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_

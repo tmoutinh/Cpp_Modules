@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmoutinh <tmoutinh@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/20 11:21:02 by tmoutinh          #+#    #+#             */
+/*   Updated: 2024/04/20 11:21:03 by tmoutinh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
@@ -5,6 +18,7 @@
 # include <iomanip>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sstream>
 
 /*************** -ContactClass- *********************/
 

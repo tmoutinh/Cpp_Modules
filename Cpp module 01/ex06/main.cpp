@@ -13,8 +13,10 @@ void	check_input(Harl cmp, std::string level)
         "WARNING"
     };
     for (int i = 0; i < 4; i++)
+	{
         if (levels[i] == level)
             complaint = i;
+	}
 
 	switch (complaint)
 	{
@@ -31,8 +33,8 @@ void	check_input(Harl cmp, std::string level)
 		cmp.complain("INFO");
 		std::cout << std::endl;
 	case 3:
-		std::cout << "[DEBUG]" << std::endl;
-		cmp.complain("DEBUG");
+		std::cout << "[WARNING]" << std::endl;
+		cmp.complain("WARNING");
 		std::cout << std::endl;
 		break ;
 	default:
@@ -41,19 +43,12 @@ void	check_input(Harl cmp, std::string level)
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	Harl cmp;
-	std::string	level;
 
-	while (1)
-	{
-		std::cout << "[DEBUG | ERROR | INFO | WARNING]"  << std::endl;
-		std::cout << "Select level : ";
-		std::getline(std::cin, level);
-		if (std::cin.eof() || level.empty())
-			break ;
-		check_input(cmp, level);
-	}
+	if (argc != 2)
+		return (1);	
+	check_input(cmp, argv[1]);
 	return (0);
 }

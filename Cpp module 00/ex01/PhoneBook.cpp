@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmoutinh <tmoutinh@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/20 11:20:45 by tmoutinh          #+#    #+#             */
+/*   Updated: 2024/04/20 11:20:46 by tmoutinh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
@@ -20,7 +33,7 @@ std::string    _get_text(std::string txt)
     if (std::cin.eof())
 		exit(0);
     size_t start = data.find_first_not_of(" \t\r\n");
-    if (start == data.size())
+    if (start == std::string::npos)
 	{
 		std::cout << "ERROR: EMPTY FIELD.\n";
 		return ("");
@@ -34,7 +47,7 @@ void    PhoneBook::add_contact()
 {
     std::string fn, ln,nc,nb,sc;
 
-    if (this->_nbcontact >= 7)
+    if (this->_nbcontact > 7)
         this->_nbcontact = 0;
     fn = _get_text("Input first name");
     ln = _get_text("Input last name");
@@ -74,20 +87,41 @@ void    PhoneBook::_display_contacts()
 
 }
 
+int	_get_num() 
+{
+	int nbr;
+	std::string input_str;
+	while (true)
+	{
+        std::cout << "Select contact index: ";
+		std::getline(std::cin, input_str);
+		std::stringstream ss(input_str);
+		if (std::cin.eof())
+			exit(0);
+		if (!(ss >> nbr) || nbr < 1 || nbr > 8)
+		{
+			std::cout << "Invalid input. Please enter a valid index (1 - 8)" <<  std::endl;
+			sleep(2);
+			system("clear");
+			std::cin.clear();
+		}
+		else
+			break ;
+	}
+	return nbr;
+}
+
 void    PhoneBook::search_contacts()
 {
     int index;
 
     this->_display_contacts();
-    std::cout << "Select contact index: ";
-    std::cin >> index;
+    index = _get_num();
     if ( (index - 1) >= 0 && (index - 1) < 8)
     {
         system("clear");
         std::cout << "Index :" << index << std::endl;
         this->_Contact_array[index - 1].display();
     }
-    else
-        std::cout << "Invalid Index" << std::endl;
     sleep(2);
 }
