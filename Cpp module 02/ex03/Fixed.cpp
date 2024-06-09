@@ -6,7 +6,7 @@
 /*   By: tmoutinh <tmoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:48:03 by tmoutinh          #+#    #+#             */
-/*   Updated: 2024/06/01 14:48:04 by tmoutinh         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:33:54 by tmoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ Fixed Fixed::operator++(int num)
 {
     Fixed temp;
 
+    (void)num;
     temp = *this;
     this->fnumber = (this->getRawBits() + 1);
     return (temp);
@@ -162,6 +163,7 @@ Fixed Fixed::operator--(int num)
 {
     Fixed temp;
 
+    (void)num;
     temp = *this;
     this->fnumber = (this->getRawBits() - 1);
     return (temp);

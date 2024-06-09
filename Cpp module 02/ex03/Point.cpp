@@ -6,7 +6,7 @@
 /*   By: tmoutinh <tmoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:48:14 by tmoutinh          #+#    #+#             */
-/*   Updated: 2024/06/01 14:48:15 by tmoutinh         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:35:34 by tmoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ Point::Point(const Point& other)
 }
 
 Point &Point::operator=(const Point& other)
-{
+{    
 }
