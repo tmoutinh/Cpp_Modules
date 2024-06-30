@@ -37,16 +37,28 @@ PmergeMe::~PmergeMe()
 
 bool     PmergeMe::parse(char *argv[])
 {
-    std::string total;
+    int                 number;
+    std::string         total;
+    std::vector<int>    vec;
     std::stringstream   stream;
-    
+
     total = std::string(argv[0]);	
 	for (int i = 1; argv[i]; i++)
 		total += " " + std::string(argv[i]);	
 	stream << total;
+    while (!stream.eof())
+    {
+        if (!stream >> number)
+            return (false);
+        if (number < 0)
+            return (false);
+        if (std::find(vec.begin(), vec.end(), number) != vec.end())
+            return (false);
+        vec.push_back(number);
+    }
 }
 
-void    PmergeMe::pair_division()
+void    PmergeMe::pair_split()
 {
-
+    
 }

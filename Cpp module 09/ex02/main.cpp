@@ -19,10 +19,13 @@ void    usage()
 
 int main(int argc, char *argv[])
 {
+    PmergeMe    seq;
     if (argc < 2)
     {
         usage();
         return (-1);
     }
+    if (seq.parse(argv))
+        std::cout << "Error" << std::endl;
     
 }

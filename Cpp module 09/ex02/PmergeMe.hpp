@@ -16,6 +16,8 @@
 #   include <stdio.h>
 #   include <vector>
 #   include <iostream>
+#   include <sstream> 
+#   include <algorithm>
 
 class PmergeMe 
 {
@@ -30,7 +32,7 @@ class PmergeMe
         ~PmergeMe();
 
         bool    parse(char* argv[]);
-        void    pair_division();
+        void    pair_split();
 };
 
 #endif
