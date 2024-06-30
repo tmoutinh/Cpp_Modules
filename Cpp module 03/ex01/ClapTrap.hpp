@@ -34,10 +34,6 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
-	std::string getName(void) const;
-	int getHealth(void) const;
-	int getEnergy(void) const;
-	int getDamage(void) const;
 };
 
 #endif

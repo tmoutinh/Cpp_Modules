@@ -12,7 +12,17 @@
 
 #include "PmergeMe.hpp"
 
-int main()
+void    usage()
 {
+    std::cout << "./PmergeMe [positive integer sequence]" << std::endl;
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc < 2)
+    {
+        usage();
+        return (-1);
+    }
     
 }

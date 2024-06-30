@@ -19,6 +19,7 @@ Animal::Animal()
 
 Animal::~Animal()
 {
+    this->type = "Undefined";
     std::cout << "Animal default destruc was called" << std::endl;
 }
 

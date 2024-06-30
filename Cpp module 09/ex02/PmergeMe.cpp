@@ -35,3 +35,18 @@ PmergeMe::~PmergeMe()
 {
 }
 
+bool     PmergeMe::parse(char *argv[])
+{
+    std::string total;
+    std::stringstream   stream;
+    
+    total = std::string(argv[0]);	
+	for (int i = 1; argv[i]; i++)
+		total += " " + std::string(argv[i]);	
+	stream << total;
+}
+
+void    PmergeMe::pair_division()
+{
+
+}

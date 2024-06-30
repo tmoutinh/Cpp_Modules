@@ -13,9 +13,6 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-
 void test_animal_copies(void)
 {
 	std::cout << "\n\t=== Testing shallow/deep copies ===\n" << std::endl;

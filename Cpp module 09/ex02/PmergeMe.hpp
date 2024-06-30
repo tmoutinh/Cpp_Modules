@@ -13,17 +13,24 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
+#   include <stdio.h>
+#   include <vector>
+#   include <iostream>
+
 class PmergeMe 
 {
     private:
-        privateMember;
+        std::vector<int>    _a_side;
+        std::vector<int>    _b_side;
+        std::vector<int>    _result;
     public:
         PmergeMe();
         PmergeMe(const PmergeMe& other);
         PmergeMe& operator=(const PmergeMe& other);
         ~PmergeMe();
+
+        bool    parse(char* argv[]);
+        void    pair_division();
 };
-
-
 
 #endif
