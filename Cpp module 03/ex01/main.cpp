@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	ScavTrap t2(argv[1]);
 	ScavTrap t3(t2);
 
-	std::cout << "\n-------- Testing t3(t2) --------\n" << std::endl;
+	std::cout << "\n-------- Testing --------\n" << std::endl;
 	t3.attack("John Cena");
 	t3.takeDamage(9);
 	t3.beRepaired(5);

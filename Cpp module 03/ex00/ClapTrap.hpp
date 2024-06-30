@@ -35,8 +35,4 @@ public:
 	void	beRepaired(unsigned int amount);
 };
 
-
-
-
-
 #endif

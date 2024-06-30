@@ -40,8 +40,4 @@ public:
 	int getDamage(void) const;
 };
 
-
-
-
-
 #endif

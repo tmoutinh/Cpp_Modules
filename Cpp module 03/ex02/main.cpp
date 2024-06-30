@@ -20,12 +20,15 @@ void usage(void)
 int main(int argc, char **argv)
 {
         if (argc < 2)
+        {
                 usage();
+                return (-1);
+        }
         FragTrap t1;
         FragTrap t2(argv[1]);
         FragTrap t3(t2);
 
-        std::cout << "\n-------- Testing t3(t2) --------\n" << std::endl;
+        std::cout << "\n-------- Testing --------\n" << std::endl;
         t3.attack("something");
         t3.takeDamage(9);
         t3.beRepaired(5);
