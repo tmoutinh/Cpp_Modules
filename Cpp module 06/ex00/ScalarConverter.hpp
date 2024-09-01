@@ -15,6 +15,17 @@
 
 #include <iostream>
 #include <string>
+#include <limits>
+#include <cstdlib>
+#include <iomanip>
+
+enum    Type
+{
+    CHAR,
+    INT,
+    FLOAT,
+    DOUBLE
+};
 
 class ScalarConverter 
 {
@@ -23,9 +34,23 @@ class ScalarConverter
         ScalarConverter(const ScalarConverter& other);
         ScalarConverter& operator=(const ScalarConverter& other);
         ~ScalarConverter();
+
         
     public:
+        static bool    is_char(std::string input);
+        static bool    is_int(std::string input);
+        static bool    is_float(std::string input);
+        static bool    is_double(std::string input);
+        static bool    is_pseudo(std::string input);
         static void    convert(std::string input);
+        static void    convertChar(char c, std::string input);
+        static void    convertInt(int c, std::string input);
+        static void    convertFloat(float c, std::string input);
+        static void    convertDouble(double c, std::string input);
+        static void    convertNumber(std::string input, long double number);
+        static void    convertPseudo(std::string input);
+        static bool    overflow(std::string input, Type type);
+        static bool  decimalSize(std::string input);
         class ImpossibleConversion : public std::exception
 	    {
 	    	public:
