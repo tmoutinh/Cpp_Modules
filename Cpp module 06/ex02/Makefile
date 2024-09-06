@@ -6,7 +6,7 @@
 #    By: tmoutinh <tmoutinh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 21:43:34 by tmoutinh          #+#    #+#              #
-#    Updated: 2024/06/21 13:39:49 by tmoutinh         ###   ########.fr        #
+#    Updated: 2024/09/02 23:23:30 by tmoutinh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRCS		= .
 OBJS_FOLDER = objs
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_ FILES _/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
-OBJS			= main.o Serializer.o
+OBJS			= main.o Base.o A.o B.o C.o
 NAME			= base
 TARGET			= $(addprefix $(SRCS)/, $(OBJS))
 
