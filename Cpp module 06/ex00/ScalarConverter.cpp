@@ -51,6 +51,8 @@ bool    ScalarConverter::is_int(std::string input)
 	size_t sign = input.find('-');
 	size_t index = 0;
 
+	if (overflow(input, INT))
+		return (false);
 	if (sign != 0)
 		sign = input.find('+');
 	if (sign != std::string::npos && sign != 0)
@@ -111,7 +113,7 @@ bool    ScalarConverter::is_double(std::string input)
 
 bool    ScalarConverter::is_pseudo(std::string input)
 {
-	return (input == "-inff" || input == "+inff" || input == "nanf" 
+	return (input == "-inff" || input == "+inff" || input == "inf" || input == "inff"
 		|| input == "-inf" || input == "+inf" || input == "nan");
 }
 
@@ -123,13 +125,13 @@ bool    ScalarConverter::overflow(std::string input, Type type)
 	switch (type) 
 	{
 		case (CHAR):
-			return (num > std::numeric_limits<char>::max() && num < std::numeric_limits<char>::max());
+			return (num > std::numeric_limits<char>::max() || num < std::numeric_limits<char>::min());
 		case (INT):
-			return (num > std::numeric_limits<int>::max() && num < std::numeric_limits<int>::max());
+			return (num > std::numeric_limits<int>::max() || num < std::numeric_limits<int>::min());
 		case (FLOAT):
-			return (num > std::numeric_limits<float>::max() && num < std::numeric_limits<float>::max());
+			return (num > std::numeric_limits<float>::max() || num < std::numeric_limits<float>::min());
 		case (DOUBLE):
-			return (num > std::numeric_limits<double>::max() && num < std::numeric_limits<double>::max());
+			return (num > std::numeric_limits<double>::max() || num < std::numeric_limits<double>::min());
 	}
 }
 
@@ -191,7 +193,7 @@ bool	ScalarConverter::decimalSize(std::string input)
 
 void    ScalarConverter::convertNumber(std::string input, long double number)
 {
-	convertChar(static_cast<char>(number), input);
+	convertChar((number), input);
 	convertInt(static_cast<int>(number), input);
 	convertFloat(static_cast<float>(number), input);
 	convertDouble(static_cast<double>(number), input);
@@ -202,20 +204,24 @@ void    ScalarConverter::convertPseudo(std::string input)
 	std::cout << "Char : Impossible\nInt : Impossible" << std::endl;
 	size_t sign = input.find('-');
 
-	if (input.find("Nan") != std::string::npos)
+	if (input.find("nan") != std::string::npos)
 	{
 		std::cout << "Float : Impossible" << std::endl;
 		std::cout << "Double : " << input.c_str() << std::endl;
+		return ;
 	}
-	if (sign != 0)
+	if (input.find("inf") != std::string::npos)
 	{
-		std::cout << "Float : Inff" << std::endl;
-		std::cout << "Double : Inf" << std::endl;
-	}
-	else
-	{
-		std::cout << "Float : -Inff" << std::endl;
-		std::cout << "Double : -Inf" << std::endl;
+		if (sign != 0)
+		{
+			std::cout << "Float : Inff" << std::endl;
+			std::cout << "Double : Inf" << std::endl;
+		}
+		else
+		{
+			std::cout << "Float : -Inff" << std::endl;
+			std::cout << "Double : -Inf" << std::endl;
+		}
 	}
 }
 

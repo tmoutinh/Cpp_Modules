@@ -32,7 +32,7 @@ int main() {
 
     try {
         Bureaucrat b("Cheedar", 4);
-        Form f("Form", 159, 159); // This should throw a GradeTooHighException
+        Form f("Form", 149, 149); // This should throw a GradeTooHighException
         std::cout << "Test passed: No exception thrown for signing form\n";
         f.beSigned(b); // This should not throw an exception
     } catch (const Form::GradeTooLowException& e) {

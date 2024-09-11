@@ -1,3 +1,4 @@
+
 #include "Base.hpp"
 
 void testBadIdentify(void)
@@ -13,7 +14,7 @@ void testBadIdentify(void)
 
 void testGoodIdentify(void)
 {
-	std::cout << "\n\t======== Testing cool identify ========\n\n";
+	std::cout << "\n\t======== Testing good identify ========\n\n";
 
 	Base *random;
 	random = generate();
