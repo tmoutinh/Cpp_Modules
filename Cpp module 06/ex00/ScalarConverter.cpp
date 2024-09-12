@@ -6,7 +6,7 @@
 /*   By: tmoutinh <tmoutinh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 23:05:37 by tmoutinh          #+#    #+#             */
-/*   Updated: 2024/06/17 19:44:21 by tmoutinh         ###   ########.fr       */
+/*   Updated: 2024/09/12 20:19:59 by tmoutinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,13 @@ bool    ScalarConverter::is_char(std::string input)
 bool    ScalarConverter::is_int(std::string input)
 {
 	size_t sign = input.find('-');
-	size_t index = 0;
 
-	if (overflow(input, INT))
+	if (!overflow(input, INT))
 		return (false);
 	if (sign != 0)
 		sign = input.find('+');
 	if (sign != std::string::npos && sign != 0)
 		return (false);
-	if (sign == 0)
-		index = 1;
 	for (size_t i = 0; i < input.size(); i++)
 	{
 		if (!(input[i] >= '0' && input[i] <= '9'))
@@ -121,23 +118,27 @@ bool    ScalarConverter::overflow(std::string input, Type type)
 {
 	long double num;
 
-	num = std::strtod(input.c_str(), NULL);
+	if (input.size() == 1)
+		num = static_cast<long double>(input[0]);
+	else
+		num = std::strtod(input.c_str(), NULL);
 	switch (type) 
 	{
 		case (CHAR):
-			return (num > std::numeric_limits<char>::max() || num < std::numeric_limits<char>::min());
+			return (num <= std::numeric_limits<char>::max() && num >= std::numeric_limits<char>::min());
 		case (INT):
-			return (num > std::numeric_limits<int>::max() || num < std::numeric_limits<int>::min());
+			return (num <= std::numeric_limits<int>::max() && num >= std::numeric_limits<int>::min());
 		case (FLOAT):
-			return (num > std::numeric_limits<float>::max() || num < std::numeric_limits<float>::min());
+			return (num <= std::numeric_limits<float>::max() && num >= std::numeric_limits<float>::min());
 		case (DOUBLE):
-			return (num > std::numeric_limits<double>::max() || num < std::numeric_limits<double>::min());
+			return (num <= std::numeric_limits<double>::max() && num >= std::numeric_limits<double>::min());
 	}
+	return (false);
 }
 
 void    ScalarConverter::convertChar(char c, std::string input)
 {
-	if (overflow(input, CHAR))
+	if (!overflow(input, CHAR))
 	{
 		std::cout << "Char : Overflowed" << std::endl;
 		return ;
@@ -150,7 +151,7 @@ void    ScalarConverter::convertChar(char c, std::string input)
 
 void    ScalarConverter::convertInt(int c, std::string input)
 {
-	if (overflow(input, INT))
+	if (!overflow(input, INT))
 	{
 		std::cout << "Int : Overflowed" << std::endl;
 		return ;
@@ -160,7 +161,7 @@ void    ScalarConverter::convertInt(int c, std::string input)
 
 void    ScalarConverter::convertFloat(float c, std::string input)
 {
-	if (overflow(input, FLOAT))
+	if (!overflow(input, FLOAT))
 	{
 		std::cout << "Float : Overflowed" << std::endl;
 		return ;
@@ -172,7 +173,7 @@ void    ScalarConverter::convertFloat(float c, std::string input)
 
 void    ScalarConverter::convertDouble(double c, std::string input)
 {
-	if (overflow(input, DOUBLE))
+	if (!overflow(input, DOUBLE))
 	{
 		std::cout << "Double : Overflowed" << std::endl;
 		return ;
@@ -193,7 +194,7 @@ bool	ScalarConverter::decimalSize(std::string input)
 
 void    ScalarConverter::convertNumber(std::string input, long double number)
 {
-	convertChar((number), input);
+	convertChar(static_cast<unsigned int>(number), input);
 	convertInt(static_cast<int>(number), input);
 	convertFloat(static_cast<float>(number), input);
 	convertDouble(static_cast<double>(number), input);
@@ -228,11 +229,11 @@ void    ScalarConverter::convertPseudo(std::string input)
 void    ScalarConverter::convert(std::string input)
 {
 	if (is_char(input))
-		convertNumber(input, input[0]);
+		convertNumber(input, static_cast<long double>(input[0]));
 	else if (is_int(input))
-		convertNumber(input, std::atoi(input.c_str()));
+		convertNumber(input, std::strtod(input.c_str(), NULL));
 	else if (is_float(input))
-		convertNumber(input, std::strtof(input.c_str(), NULL));
+		convertNumber(input, std::strtod(input.c_str(), NULL));
 	else if (is_double(input))
 		convertNumber(input, std::strtod(input.c_str(), NULL));
 	else if (is_pseudo(input))
