@@ -56,7 +56,10 @@ bool    ScalarConverter::is_int(std::string input)
 		sign = input.find('+');
 	if (sign != std::string::npos && sign != 0)
 		return (false);
-	for (size_t i = 0; i < input.size(); i++)
+	size_t	i = 0;
+	if (sign == 0)
+		i++;
+	for (; i < input.size(); i++)
 	{
 		if (!(input[i] >= '0' && input[i] <= '9'))
 			return (false);
