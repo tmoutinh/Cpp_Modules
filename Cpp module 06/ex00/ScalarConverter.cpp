@@ -132,9 +132,9 @@ bool    ScalarConverter::overflow(std::string input, Type type)
 		case (INT):
 			return (num <= std::numeric_limits<int>::max() && num >= std::numeric_limits<int>::min());
 		case (FLOAT):
-			return (num <= std::numeric_limits<float>::max() && num >= std::numeric_limits<float>::min());
+			return (num <= std::numeric_limits<float>::max() && num >= std::numeric_limits<float>::lowest());
 		case (DOUBLE):
-			return (num <= std::numeric_limits<double>::max() && num >= std::numeric_limits<double>::min());
+			return (num <= std::numeric_limits<double>::max() && num >= std::numeric_limits<double>::lowest());
 	}
 	return (false);
 }
