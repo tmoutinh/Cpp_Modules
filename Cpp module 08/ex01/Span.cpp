@@ -12,6 +12,11 @@
 
 #include "Span.hpp"
 
+Span::Span() 
+{
+    _size = 0;
+}
+
 Span::Span(unsigned int n) 
 {
     _size = n;
@@ -65,4 +70,16 @@ int    Span::longestSpan()
     std::sort(_container.begin(), _container.end());
     int maxSpan = _container[_container.size() - 1] - _container[0];
     return (maxSpan);
+}
+
+int fillHelper(void)
+{
+	return (rand() % 100); 
+}
+
+void Span::fill(void)
+{
+	this->_container.resize(_size);	
+	std::generate(this->_container.begin(), this->_container.end(), &fillHelper);
+	std::sort(this->_container.begin(), this->_container.end());
 }

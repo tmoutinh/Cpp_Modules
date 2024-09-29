@@ -29,7 +29,7 @@ void    easyfind(T container, int value)
 {
     typename T::iterator it = std::find(container.begin(), container.end(), value);
     if (it != container.end())
-        std::cout << "Value found in container.\n";
+        std::cout << "Value found in container at position " << std::distance (container.begin(), it) << std::endl;
     else
         throw NotFound();
 }

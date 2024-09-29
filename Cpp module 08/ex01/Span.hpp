@@ -23,6 +23,7 @@ class Span
         std::vector<int>    _container;
         unsigned int        _size;
     public:
+        Span();
         Span(unsigned int n);
         Span(const Span& other);
         Span& operator=(const Span& other);
@@ -30,6 +31,7 @@ class Span
         void    addNumber(int n);
         int    shortestSpan();
         int    longestSpan();
+        void    fill(void);
         class FullContainer : public std::exception
         {
             public:
